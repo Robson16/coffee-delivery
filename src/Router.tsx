@@ -1,9 +1,13 @@
 import { Route, Routes } from "react-router-dom";
+import { Home } from "./Pages/Home";
+import { DefaultLayout } from "./layouts/DefaultLayout";
 
 export function Router() {
   return (
     <Routes>
-      <Route path="/" element={<div>Hello World</div>} />
+      <Route path="/" element={<DefaultLayout />}>
+        <Route path="/" element={<Home />} />
+      </Route>
     </Routes>
   )
 }
