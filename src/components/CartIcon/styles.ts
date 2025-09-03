@@ -1,0 +1,23 @@
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
+export const CartIconContainer = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem; // 38px
+  height: 2.375rem; // 38px
+  color: ${(props) => props.theme.colors['yellow-dark']};
+  background-color: ${(props) => props.theme.colors['yellow-light']};
+  border-radius: 6px;
+  transition: background-color 0.4s, color 0.4s;
+
+  svg {
+    font-size: 1.125rem; // 18px
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.colors['yellow-light']};
+    background-color: ${(props) => props.theme.colors['yellow']};
+  }
+`;
