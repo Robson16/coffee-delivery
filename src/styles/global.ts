@@ -19,8 +19,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body, input, textarea, button {
-    font-family: "Roboto", sans-serif;
+    font-family: ${(props) => props.theme.typography.fontFamily.roboto};
     font-weight: 400;
-    font-size: 1rem; 
+    font-size: ${(props) => props.theme.typography.text['text-m'].size};
+    line-height: ${(props) => props.theme.typography.text['text-m'].lineHeight};
   }
 `
