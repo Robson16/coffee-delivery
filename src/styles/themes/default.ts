@@ -1,4 +1,10 @@
 export const defaultTheme = {
+  container: {
+    maxWidth: '70rem', // 1120px
+    padding: '0 1rem',
+    margin: '0 auto',
+  },
+
   colors: {
     white: '#FFF',
     background: '#FAFAFA',

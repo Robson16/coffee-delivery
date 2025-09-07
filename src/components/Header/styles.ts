@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
+  width: 100%;
+  max-width: ${(props) => props.theme.container.maxWidth};
+  padding: ${(props) => props.theme.container.padding};
+  margin: ${(props) => props.theme.container.margin};
   display: flex;
   align-items: center;
   justify-content: space-between;
