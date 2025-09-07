@@ -29,8 +29,8 @@ export const defaultTheme = {
 
   typography: {
     fontFamily: {
-      baloo2: 'Baloo 2',
-      roboto: 'Roboto',
+      baloo2: '"Baloo 2", sans-serif',
+      roboto: 'Roboto, sans-serif',
     },
     title: {
       'title-xl': {
