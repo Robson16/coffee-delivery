@@ -1,62 +1,70 @@
 import { HiShoppingCart } from 'react-icons/hi'
 import { PiCoffeeFill, PiPackageFill, PiTimerFill } from 'react-icons/pi'
+import { useTheme } from 'styled-components'
 import CoffeeImage from '../../assets/coffee-image.png'
-import {
-  IconContainer,
-  IconList,
-  IconListItem,
-  IntroContainer,
-  IntroWrapper,
-  Subtitle,
-  Title,
-} from './styles'
+import { Intro, IntroContent } from './styles'
 
 export function Home() {
+  const theme = useTheme()
   return (
-    <IntroWrapper>
-      <IntroContainer>
-        <div>
-          <Title>Encontre o café perfeito para qualquer hora do dia</Title>
+    <>
+      <Intro>
+        <IntroContent>
+          <div>
+            <h1>Encontre o café perfeito para qualquer hora do dia</h1>
 
-          <Subtitle>
-            Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
-            hora
-          </Subtitle>
+            <h2>
+              Com o Coffee Delivery você recebe seu café onde estiver, a
+              qualquer hora
+            </h2>
 
-          <IconList>
-            <IconListItem>
-              <IconContainer bgColor="yellow-dark">
-                <HiShoppingCart size={20} />
-              </IconContainer>
-              Compra simples e segura
-            </IconListItem>
+            <ul>
+              <li>
+                <HiShoppingCart
+                  size={32}
+                  width={'fill'}
+                  color={theme.colors.background}
+                  style={{ backgroundColor: theme.colors['yellow-dark'] }}
+                />
+                Compra simples e segura
+              </li>
 
-            <IconListItem>
-              <IconContainer bgColor="base-text">
-                <PiPackageFill size={20} />
-              </IconContainer>
-              Embalagem mantém o café intacto
-            </IconListItem>
+              <li>
+                <PiPackageFill
+                  size={32}
+                  width={'fill'}
+                  color={theme.colors.background}
+                  style={{ backgroundColor: theme.colors['base-text'] }}
+                />
+                Embalagem mantém o café intacto
+              </li>
 
-            <IconListItem>
-              <IconContainer bgColor="yellow">
-                <PiTimerFill size={20} />
-              </IconContainer>
-              Entrega rápida e rastreada
-            </IconListItem>
+              <li>
+                <PiTimerFill
+                  size={32}
+                  width={'fill'}
+                  color={theme.colors.background}
+                  style={{ backgroundColor: theme.colors['yellow'] }}
+                />
+                Entrega rápida e rastreada
+              </li>
 
-            <IconListItem>
-              <IconContainer bgColor="purple">
-                <PiCoffeeFill size={20} />
-              </IconContainer>
-              O café chega fresquinho até você
-            </IconListItem>
-          </IconList>
-        </div>
-        <div>
-          <img src={CoffeeImage} alt="Copo de café" />
-        </div>
-      </IntroContainer>
-    </IntroWrapper>
+              <li>
+                <PiCoffeeFill
+                  size={32}
+                  width={'fill'}
+                  color={theme.colors.background}
+                  style={{ backgroundColor: theme.colors['purple'] }}
+                />
+                O café chega fresquinho até você
+              </li>
+            </ul>
+          </div>
+          <div>
+            <img src={CoffeeImage} alt="Copo de café" />
+          </div>
+        </IntroContent>
+      </Intro>
+    </>
   )
 }
