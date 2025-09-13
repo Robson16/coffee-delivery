@@ -84,3 +84,37 @@ export const IntroContent = styled.div`
     }
   }
 `
+
+export const CoffeeList = styled.section`
+  margin: 0 auto;
+  width: 100%;
+  max-width: ${(props) => props.theme.container.maxWidth};
+  padding: ${(props) => props.theme.container.padding};
+
+  h2 {
+    font-size: ${(props) => props.theme.typography.title['title-l'].size};
+    font-family: ${(props) => props.theme.typography.fontFamily.baloo2};
+    font-weight: 800;
+    line-height: ${(props) =>
+      props.theme.typography.title['title-l'].lineHeight};
+    color: ${(props) => props.theme.colors['base-subtitle']};
+  }
+
+  & > div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: space-between;
+    gap: 3.5rem; // 56px
+    margin-top: 3.4rem; // 54px
+    margin-bottom: 6.75rem; // 108px
+
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+`

@@ -1,8 +1,9 @@
 import { HiShoppingCart } from 'react-icons/hi'
 import { PiCoffeeFill, PiPackageFill, PiTimerFill } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
+import { coffees } from '../../../data.json'
 import CoffeeImage from '../../assets/coffee-image.png'
-import { Intro, IntroContent } from './styles'
+import { CoffeeList, Intro, IntroContent } from './styles'
 
 export function Home() {
   const theme = useTheme()
@@ -65,6 +66,19 @@ export function Home() {
           </div>
         </IntroContent>
       </Intro>
+      <CoffeeList>
+        <h2>Nossos cafés</h2>
+
+        <div>
+          {coffees.map((coffee) => (
+            <div key={coffee.id}>
+              <img src={coffee.image} alt={coffee.title} />
+              <h3>{coffee.title}</h3>
+              <p>{coffee.description}</p>
+            </div>
+          ))}
+        </div>
+      </CoffeeList>
     </>
   )
 }
