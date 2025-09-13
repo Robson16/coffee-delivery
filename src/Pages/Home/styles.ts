@@ -105,7 +105,7 @@ export const CoffeeList = styled.section`
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
     justify-content: space-between;
-    gap: 3.5rem; // 56px
+    gap: 2.5rem 2rem; // 40px 32px
     margin-top: 3.4rem; // 54px
     margin-bottom: 6.75rem; // 108px
 

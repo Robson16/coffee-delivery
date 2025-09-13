@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components'
 import { coffees } from '../../../data.json'
 import CoffeeImage from '../../assets/coffee-image.png'
 import { CoffeeList, Intro, IntroContent } from './styles'
+import { Card } from '../../components/Card'
 
 export function Home() {
   const theme = useTheme()
@@ -71,11 +72,7 @@ export function Home() {
 
         <div>
           {coffees.map((coffee) => (
-            <div key={coffee.id}>
-              <img src={coffee.image} alt={coffee.title} />
-              <h3>{coffee.title}</h3>
-              <p>{coffee.description}</p>
-            </div>
+            <Card key={coffee.id} coffee={coffee} />
           ))}
         </div>
       </CoffeeList>
