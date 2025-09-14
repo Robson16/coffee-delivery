@@ -1,3 +1,4 @@
+import { InputQuantity } from '../Form/InputQuantity'
 import {
   Actions,
   CoffeeImage,
@@ -39,7 +40,9 @@ export function Card({ coffee }: CardProps) {
           <span>R$</span>
           <span>{coffee.price.toFixed(2)}</span>
         </Price>
-        <Order>{/* TODO: Ações de adicionar ao carrinho */}</Order>
+        <Order>
+          <InputQuantity />
+        </Order>
       </Actions>
     </Container>
   )

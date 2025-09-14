@@ -10,9 +10,7 @@ export const CartIconContainer = styled(NavLink)`
   color: ${(props) => props.theme.colors['primary-dark']};
   background-color: ${(props) => props.theme.colors['primary-light']};
   border-radius: 6px;
-  transition:
-    background-color 0.4s,
-    color 0.4s;
+  transition: all 0.2s;
 
   svg {
     font-size: 1.125rem; // 18px
