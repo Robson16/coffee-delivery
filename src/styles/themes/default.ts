@@ -18,13 +18,13 @@ export const defaultTheme = {
     'base-subtitle': '#403937',
     'base-title': '#272221',
 
-    'purple-light': '#EBE5F9',
-    purple: '#8047F8',
-    'purple-dark': '#4B2995',
+    'primary-light': '#F1E9C9',
+    primary: '#DBAC2C',
+    'primary-dark': '#C47F17',
 
-    'yellow-light': '#F1E9C9',
-    yellow: '#DBAC2C',
-    'yellow-dark': '#C47F17',
+    'secondary-light': '#EBE5F9',
+    secondary: '#8047F8',
+    'secondary-dark': '#4B2995',
   },
 
   typography: {

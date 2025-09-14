@@ -7,8 +7,8 @@ export const CartIconContainer = styled(NavLink)`
   justify-content: center;
   width: 2.375rem; // 38px
   height: 2.375rem; // 38px
-  color: ${(props) => props.theme.colors['yellow-dark']};
-  background-color: ${(props) => props.theme.colors['yellow-light']};
+  color: ${(props) => props.theme.colors['primary-dark']};
+  background-color: ${(props) => props.theme.colors['primary-light']};
   border-radius: 6px;
   transition:
     background-color 0.4s,
@@ -19,7 +19,7 @@ export const CartIconContainer = styled(NavLink)`
   }
 
   &:hover {
-    color: ${(props) => props.theme.colors['yellow-light']};
-    background-color: ${(props) => props.theme.colors['yellow']};
+    color: ${(props) => props.theme.colors['primary-light']};
+    background-color: ${(props) => props.theme.colors['primary']};
   }
 `

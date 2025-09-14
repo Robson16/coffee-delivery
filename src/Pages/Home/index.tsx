@@ -26,7 +26,7 @@ export function Home() {
                   size={32}
                   width={'fill'}
                   color={theme.colors.background}
-                  style={{ backgroundColor: theme.colors['yellow-dark'] }}
+                  style={{ backgroundColor: theme.colors['primary-dark'] }}
                 />
                 Compra simples e segura
               </li>
@@ -46,7 +46,7 @@ export function Home() {
                   size={32}
                   width={'fill'}
                   color={theme.colors.background}
-                  style={{ backgroundColor: theme.colors['yellow'] }}
+                  style={{ backgroundColor: theme.colors['primary'] }}
                 />
                 Entrega rápida e rastreada
               </li>
@@ -56,7 +56,7 @@ export function Home() {
                   size={32}
                   width={'fill'}
                   color={theme.colors.background}
-                  style={{ backgroundColor: theme.colors['purple'] }}
+                  style={{ backgroundColor: theme.colors['secondary'] }}
                 />
                 O café chega fresquinho até você
               </li>

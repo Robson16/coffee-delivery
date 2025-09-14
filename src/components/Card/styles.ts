@@ -34,8 +34,8 @@ export const Tags = styled.div`
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 100px;
-    color: ${(props) => props.theme.colors['yellow-dark']};
-    background-color: ${(props) => props.theme.colors['yellow-light']};
+    color: ${(props) => props.theme.colors['primary-dark']};
+    background-color: ${(props) => props.theme.colors['primary-light']};
   }
 `
 
