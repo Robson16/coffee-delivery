@@ -86,7 +86,7 @@ export const IntroContent = styled.div`
 `
 
 export const CoffeeList = styled.section`
-  margin: 0 auto;
+  margin: 3.4rem auto 0;
   width: 100%;
   max-width: ${(props) => props.theme.container.maxWidth};
   padding: ${(props) => props.theme.container.padding};
