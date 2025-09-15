@@ -86,4 +86,27 @@ export const Price = styled.div`
   }
 `
 
-export const Order = styled.div``
+export const Order = styled.div`
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
+`
+
+export const AddToCartButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.5rem;
+  border: 0;
+  border-radius: 6px;
+  color: ${(props) => props.theme.colors['white']};
+  background-color: ${(props) => props.theme.colors['secondary-dark']};
+  transition: all 0.2s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: ${(props) => props.theme.colors['secondary']};
+  }
+`

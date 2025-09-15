@@ -1,27 +1,24 @@
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { Button, InputNumberContainer } from './styles'
-import { useState } from 'react'
 
-export function InputQuantity() {
-  const [quantity, setQuantity] = useState(1)
+interface InputQuantityProps {
+  quantity: number
+  incrementQuantity: () => void
+  decrementQuantity: () => void
+}
 
-  function handleQuantityChange(modifier: number) {
-    setQuantity((state) => {
-      // Calculates the new value
-      const newQuantity = state + modifier
-      // Returns the greater value between 'newQuantity' and 1,
-      // ensuring that the result is never less than 1
-      return Math.max(newQuantity, 1)
-    })
-  }
-
+export function InputQuantity({
+  quantity,
+  incrementQuantity,
+  decrementQuantity,
+}: InputQuantityProps) {
   return (
     <InputNumberContainer>
-      <Button onClick={() => handleQuantityChange(1)}>
+      <Button onClick={incrementQuantity}>
         <FiPlus size={14} />
       </Button>
       <span>{quantity}</span>
-      <Button onClick={() => handleQuantityChange(-1)}>
+      <Button onClick={decrementQuantity}>
         <FiMinus size={14} />
       </Button>
     </InputNumberContainer>
