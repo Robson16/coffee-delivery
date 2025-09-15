@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { HiShoppingCart } from 'react-icons/hi'
+import { HiCheck, HiShoppingCart } from 'react-icons/hi'
 import { CartContext } from '../../contexts/CartContext'
 import { InputQuantity } from '../Form/InputQuantity'
 import {
@@ -30,8 +30,9 @@ interface CardProps {
 }
 
 export function Card({ coffee }: CardProps) {
-  const { products, addProduct } = useContext(CartContext)
+  const { addProduct } = useContext(CartContext)
   const [quantity, setQuantity] = useState(1)
+  const [isAddToCart, setIsAddToCart] = useState(false)
 
   function handleIncrementQuantity() {
     setQuantity((state) => state + 1)
@@ -45,12 +46,25 @@ export function Card({ coffee }: CardProps) {
 
   function handleAddProduct() {
     addProduct({ id: coffee.id, quantity })
+    setIsAddToCart(true)
     setQuantity(1)
   }
 
   useEffect(() => {
-    console.log(products)
-  }, [products])
+    let timeout: number
+
+    if (isAddToCart) {
+      timeout = setTimeout(() => {
+        setIsAddToCart(false)
+      }, 2000)
+    }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout)
+      }
+    }
+  }, [isAddToCart])
 
   return (
     <Container>
@@ -75,8 +89,8 @@ export function Card({ coffee }: CardProps) {
             incrementQuantity={handleIncrementQuantity}
             decrementQuantity={handleDecrementQuantity}
           />
-          <AddToCartButton onClick={handleAddProduct}>
-            <HiShoppingCart size={20} />
+          <AddToCartButton disabled={isAddToCart} onClick={handleAddProduct}>
+            {isAddToCart ? <HiCheck size={20} /> : <HiShoppingCart size={20} />}
           </AddToCartButton>
         </Order>
       </Actions>

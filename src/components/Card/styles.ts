@@ -104,6 +104,16 @@ export const AddToCartButton = styled.button`
   background-color: ${(props) => props.theme.colors['secondary-dark']};
   transition: all 0.2s;
 
+  &:disabled {
+    background-color: ${(props) => props.theme.colors['primary-dark']};
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: ${(props) => props.theme.colors['primary']};
+    }
+  }
+
   &:hover,
   &:active,
   &:focus {
