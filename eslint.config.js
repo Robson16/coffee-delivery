@@ -14,17 +14,16 @@ export default tseslint.config([
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
-      
-    ],    
+    ],
     plugins: {
       prettier: pluginPrettier,
-      'react-hooks': reactHooks, 
+      'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
-    },    
+    },
     rules: {
       '@typescript-eslint/no-empty-object-type': 'off',
       'prettier/prettier': 'error',
@@ -32,6 +31,6 @@ export default tseslint.config([
       'react-hooks/exhaustive-deps': 'warn',
       'react-refresh/only-export-components': 'warn'
     },
-  },  
+  },
   eslintConfigPrettier,
 ])

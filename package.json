@@ -1,8 +1,31 @@
 {
   "name": "coffee-delivery",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Uma aplicação de e-commerce de café para gerenciar um carrinho de compras. Desenvolvida em ReactJS com TypeScript, aplicando conceitos como Context API, imutabilidade e manipulação de estado.",
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://coffee-delivery-vert.vercel.app/",
+  "author": {
+    "name": "Robson H. Rodrigues",
+    "url": "https://github.com/Robson16"
+  },
+  "keywords": [
+    "ignite",
+    "react",
+    "typescript",
+    "rocketseat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Robson16/coffee-delivery"
+  },
+  "bugs": {
+    "url": "https://github.com/Robson16/coffee-delivery/issues"
+  },
   "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
