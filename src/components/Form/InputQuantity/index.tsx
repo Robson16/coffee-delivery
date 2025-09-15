@@ -14,12 +14,12 @@ export function InputQuantity({
 }: InputQuantityProps) {
   return (
     <InputNumberContainer>
-      <Button onClick={incrementQuantity}>
-        <FiPlus size={14} />
-      </Button>
-      <span>{quantity}</span>
       <Button onClick={decrementQuantity}>
         <FiMinus size={14} />
+      </Button>
+      <span>{quantity}</span>
+      <Button onClick={incrementQuantity}>
+        <FiPlus size={14} />
       </Button>
     </InputNumberContainer>
   )
