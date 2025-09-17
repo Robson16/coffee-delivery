@@ -5,8 +5,8 @@ import { InputQuantity } from '../Form/InputQuantity'
 import {
   Actions,
   AddToCartButton,
+  CardContainer,
   CoffeeImage,
-  Container,
   Description,
   Infos,
   Order,
@@ -67,7 +67,7 @@ export function Card({ coffee }: CardProps) {
   }, [isAddToCart])
 
   return (
-    <Container>
+    <CardContainer>
       <CoffeeImage src={coffee.image} alt={coffee.title} />
       <Infos>
         <Tags>
@@ -94,6 +94,6 @@ export function Card({ coffee }: CardProps) {
           </AddToCartButton>
         </Order>
       </Actions>
-    </Container>
+    </CardContainer>
   )
 }
