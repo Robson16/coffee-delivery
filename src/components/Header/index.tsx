@@ -15,7 +15,7 @@ export function Header() {
           <HiMapPin size={24} />
           Jundiaí, SP
         </Location>
-        <CartIcon />
+        <CartIcon to="/checkout" />
       </nav>
     </HeaderContainer>
   )
