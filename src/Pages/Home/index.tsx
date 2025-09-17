@@ -3,11 +3,12 @@ import { PiCoffeeFill, PiPackageFill, PiTimerFill } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
 import { coffees } from '../../../data.json'
 import CoffeeImage from '../../assets/coffee-image.png'
-import { CoffeeList, Intro, IntroContent } from './styles'
 import { Card } from '../../components/Card'
+import { CoffeeList, Intro, IntroContent } from './styles'
 
 export function Home() {
   const theme = useTheme()
+
   return (
     <>
       <Intro>
