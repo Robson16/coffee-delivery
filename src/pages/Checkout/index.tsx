@@ -1,9 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { FiMapPin } from 'react-icons/fi'
+import { MdOutlineAttachMoney } from 'react-icons/md'
+import { PiBank, PiCreditCard, PiCurrencyDollar } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
 import zod from 'zod'
 import { InputText } from '../../components/Form/InputText'
+import { PaymentOption } from '../../components/Form/PaymentOption'
 import {
   AddressFormGrid,
   CheckoutContainer,
@@ -12,8 +15,8 @@ import {
   HeadingWithIcon,
   OrderReview,
   PaymentMethod,
+  PaymentOptionsGrid,
 } from './styles'
-import { MdOutlineAttachMoney } from 'react-icons/md'
 
 const checkoutFormValidationSchema = zod.object({
   cep: zod.string().regex(/^(\d{5}-\d{3}|\d{8})$/, {
@@ -28,6 +31,9 @@ const checkoutFormValidationSchema = zod.object({
     .string()
     .nonempty('Informe a UF')
     .length(2, 'UF deve ter 2 caracteres'),
+  paymentMethod: zod.enum(['credit', 'debit', 'money'], {
+    message: 'Informe um método de pagamento',
+  }),
 })
 
 type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
@@ -46,9 +52,11 @@ export function Checkout() {
     mode: 'onTouched',
   })
 
-  const { register, handleSubmit, formState, reset } = checkoutForm
+  const { register, handleSubmit, watch, formState, reset } = checkoutForm
 
   const { isValid, errors } = formState
+
+  const selectedPaymentMethod = watch('paymentMethod')
 
   function handleCreateNewOrder(data: CheckoutFormData) {
     console.log(data)
@@ -68,6 +76,7 @@ export function Checkout() {
                 <p>Informe o endereço onde deseja receber seu pedido</p>
               </div>
             </HeadingWithIcon>
+
             <AddressFormGrid>
               <InputText
                 gridArea={gridAreas.CEP}
@@ -121,6 +130,7 @@ export function Checkout() {
               />
             </AddressFormGrid>
           </DeliveryDetails>
+
           <PaymentMethod>
             <HeadingWithIcon>
               <MdOutlineAttachMoney size={22} color={theme.colors.secondary} />
@@ -132,6 +142,39 @@ export function Checkout() {
                 </p>
               </div>
             </HeadingWithIcon>
+
+            <PaymentOptionsGrid>
+              <PaymentOption
+                isSelected={selectedPaymentMethod === 'credit'}
+                value={'credit'}
+                {...register('paymentMethod')}
+              >
+                <PiCreditCard />
+                <span>Cartão de Crédito</span>
+              </PaymentOption>
+              <PaymentOption
+                isSelected={selectedPaymentMethod === 'debit'}
+                value={'debit'}
+                {...register('paymentMethod')}
+              >
+                <PiBank />
+                <span>Cartão de Débito</span>
+              </PaymentOption>
+              <PaymentOption
+                isSelected={selectedPaymentMethod === 'money'}
+                value={'money'}
+                {...register('paymentMethod')}
+              >
+                <PiCurrencyDollar />
+                <span>Dinheiro</span>
+              </PaymentOption>
+            </PaymentOptionsGrid>
+
+            {errors.paymentMethod?.message && (
+              <p style={{ color: theme.colors.secondary }}>
+                {errors.paymentMethod.message}
+              </p>
+            )}
           </PaymentMethod>
         </div>
 

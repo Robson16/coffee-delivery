@@ -70,6 +70,9 @@ export const HeadingWithIcon = styled.hgroup`
 `
 
 const SectionBase = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   padding: 1rem;
   background-color: ${(props) => props.theme.colors['base-card']};
   border-radius: 6px;
@@ -79,11 +82,7 @@ const SectionBase = styled.section`
   }
 `
 
-export const DeliveryDetails = styled(SectionBase)`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-`
+export const DeliveryDetails = styled(SectionBase)``
 
 export const AddressFormGrid = styled.div`
   display: grid;
@@ -107,6 +106,16 @@ export const AddressFormGrid = styled.div`
 `
 
 export const PaymentMethod = styled(SectionBase)``
+
+export const PaymentOptionsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`
 
 export const OrderReview = styled(SectionBase)`
   border-radius: 6px 36px 6px 36px;
