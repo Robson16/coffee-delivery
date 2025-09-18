@@ -29,7 +29,7 @@ export function InputText({
   }
 
   return (
-    <InputWrapper gridArea={gridArea}>
+    <InputWrapper $gridArea={gridArea}>
       <InputContainer data-state={isFocused ? 'focused' : 'blurred'}>
         <input
           type="text"

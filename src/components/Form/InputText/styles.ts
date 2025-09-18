@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 interface GridInputProps {
-  gridArea?: string
+  $gridArea?: string
 }
 
 export const InputWrapper = styled.div<GridInputProps>`
-  ${(props) => props.gridArea && `grid-area: ${props.gridArea};`}
+  ${(props) => props.$gridArea && `grid-area: ${props.$gridArea};`}
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
