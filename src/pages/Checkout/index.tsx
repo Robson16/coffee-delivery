@@ -1,14 +1,19 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { FiMapPin } from 'react-icons/fi'
+import { useTheme } from 'styled-components'
 import zod from 'zod'
 import { InputText } from '../../components/Form/InputText'
 import {
+  AddressFormGrid,
   CheckoutContainer,
   DeliveryDetails,
   gridAreas,
+  HeadingWithIcon,
   OrderReview,
   PaymentMethod,
 } from './styles'
+import { MdOutlineAttachMoney } from 'react-icons/md'
 
 const checkoutFormValidationSchema = zod.object({
   cep: zod.string().regex(/^(\d{5}-\d{3}|\d{8})$/, {
@@ -28,6 +33,7 @@ const checkoutFormValidationSchema = zod.object({
 type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
+  const theme = useTheme()
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
@@ -55,58 +61,78 @@ export function Checkout() {
         <div>
           <h2>Complete seu pedido</h2>
           <DeliveryDetails>
-            <InputText
-              gridArea={gridAreas.CEP}
-              id="cep"
-              placeholder="CEP"
-              error={errors.cep}
-              {...register('cep')}
-            />
-            <InputText
-              gridArea={gridAreas.STREET}
-              id="street"
-              placeholder="Rua"
-              error={errors.street}
-              {...register('street')}
-            />
-            <InputText
-              gridArea={gridAreas.NUMBER}
-              id="number"
-              placeholder="Número"
-              error={errors.number}
-              {...register('number')}
-            />
-            <InputText
-              gridArea={gridAreas.COMPLEMENT}
-              id="complement"
-              placeholder="Complemento"
-              optional
-              error={errors.complement}
-              {...register('complement')}
-            />
-            <InputText
-              gridArea={gridAreas.NEIGHBORHOOD}
-              id="neighborhood"
-              placeholder="Bairro"
-              error={errors.neighborhood}
-              {...register('neighborhood')}
-            />
-            <InputText
-              gridArea={gridAreas.CITY}
-              id="city"
-              placeholder="Cidade"
-              error={errors.city}
-              {...register('city')}
-            />
-            <InputText
-              gridArea={gridAreas.STATE}
-              id="state"
-              placeholder="UF"
-              error={errors.state}
-              {...register('state')}
-            />
+            <HeadingWithIcon>
+              <FiMapPin size={22} color={theme.colors.primary} />
+              <div>
+                <h3>Endereço de Entrega</h3>
+                <p>Informe o endereço onde deseja receber seu pedido</p>
+              </div>
+            </HeadingWithIcon>
+            <AddressFormGrid>
+              <InputText
+                gridArea={gridAreas.CEP}
+                id="cep"
+                placeholder="CEP"
+                error={errors.cep}
+                {...register('cep')}
+              />
+              <InputText
+                gridArea={gridAreas.STREET}
+                id="street"
+                placeholder="Rua"
+                error={errors.street}
+                {...register('street')}
+              />
+              <InputText
+                gridArea={gridAreas.NUMBER}
+                id="number"
+                placeholder="Número"
+                error={errors.number}
+                {...register('number')}
+              />
+              <InputText
+                gridArea={gridAreas.COMPLEMENT}
+                id="complement"
+                placeholder="Complemento"
+                optional
+                error={errors.complement}
+                {...register('complement')}
+              />
+              <InputText
+                gridArea={gridAreas.NEIGHBORHOOD}
+                id="neighborhood"
+                placeholder="Bairro"
+                error={errors.neighborhood}
+                {...register('neighborhood')}
+              />
+              <InputText
+                gridArea={gridAreas.CITY}
+                id="city"
+                placeholder="Cidade"
+                error={errors.city}
+                {...register('city')}
+              />
+              <InputText
+                gridArea={gridAreas.STATE}
+                id="state"
+                placeholder="UF"
+                error={errors.state}
+                {...register('state')}
+              />
+            </AddressFormGrid>
           </DeliveryDetails>
-          <PaymentMethod></PaymentMethod>
+          <PaymentMethod>
+            <HeadingWithIcon>
+              <MdOutlineAttachMoney size={22} color={theme.colors.secondary} />
+              <div>
+                <h3>Pagamento</h3>
+                <p>
+                  O pagamento é feito na entrega. Escolha a forma que deseja
+                  pagar
+                </p>
+              </div>
+            </HeadingWithIcon>
+          </PaymentMethod>
         </div>
 
         <div>

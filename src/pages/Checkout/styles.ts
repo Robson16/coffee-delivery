@@ -11,7 +11,7 @@ export const gridAreas = {
 } as const
 
 export const CheckoutContainer = styled.main`
-  margin: 3.4rem auto 0;
+  margin: 3.4rem auto;
   width: 100%;
   max-width: ${(props) => props.theme.container.maxWidth};
   padding: ${(props) => props.theme.container.padding};
@@ -54,6 +54,21 @@ export const CheckoutContainer = styled.main`
   }
 `
 
+export const HeadingWithIcon = styled.hgroup`
+  display: flex;
+  gap: 0.5rem;
+
+  h3 {
+    font-size: ${(props) => props.theme.typography.text['text-m'].size};
+    line-height: ${(props) => props.theme.typography.text['text-m'].lineHeight};
+  }
+
+  p {
+    font-size: ${(props) => props.theme.typography.text['text-s'].size};
+    line-height: ${(props) => props.theme.typography.text['text-s'].lineHeight};
+  }
+`
+
 const SectionBase = styled.section`
   padding: 1rem;
   background-color: ${(props) => props.theme.colors['base-card']};
@@ -65,6 +80,12 @@ const SectionBase = styled.section`
 `
 
 export const DeliveryDetails = styled(SectionBase)`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
+
+export const AddressFormGrid = styled.div`
   display: grid;
   grid-template-areas:
     '${gridAreas.CEP} ${gridAreas.CEP}'
