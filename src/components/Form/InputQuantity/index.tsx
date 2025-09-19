@@ -14,11 +14,21 @@ export function InputQuantity({
 }: InputQuantityProps) {
   return (
     <InputNumberContainer>
-      <Button onClick={decrementQuantity}>
+      <Button
+        onClick={(event: React.MouseEvent) => {
+          event.preventDefault()
+          decrementQuantity()
+        }}
+      >
         <FiMinus size={14} />
       </Button>
       <span>{quantity}</span>
-      <Button onClick={incrementQuantity}>
+      <Button
+        onClick={(event: React.MouseEvent) => {
+          event.preventDefault()
+          incrementQuantity()
+        }}
+      >
         <FiPlus size={14} />
       </Button>
     </InputNumberContainer>
