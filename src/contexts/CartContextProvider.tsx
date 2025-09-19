@@ -2,7 +2,7 @@ import { useReducer, type ReactNode } from 'react'
 import {
   addProductAction,
   decrementProductQuantityAction,
-  IncrementProductQuantityAction,
+  incrementProductQuantityAction,
   removeProductAction,
 } from '../reducers/cart/actions'
 import { cartReducer, type Product } from '../reducers/cart/reducer'
@@ -39,7 +39,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   function incrementProductQuantity(id: string) {
-    dispatch(IncrementProductQuantityAction(id))
+    dispatch(incrementProductQuantityAction(id))
   }
 
   function decrementProductQuantity(id: string) {

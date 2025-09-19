@@ -31,7 +31,8 @@ interface IncrementProductQuantityAction {
     id: string
   }
 }
-interface decrementProductQuantityAction {
+
+interface DecrementProductQuantityAction {
   type: typeof ActionTypes.DECREMENT_PRODUCT_QUANTITY
   payload: {
     id: string
@@ -42,7 +43,7 @@ export type Actions =
   | AddProductAction
   | RemoveProductAction
   | IncrementProductQuantityAction
-  | decrementProductQuantityAction
+  | DecrementProductQuantityAction
 
 export function addProductAction(
   // This syntax ensures the function only requires an object
@@ -71,9 +72,9 @@ export function removeProductAction(id: string) {
   }
 }
 
-export function IncrementProductQuantityAction(id: string) {
+export function incrementProductQuantityAction(id: string) {
   return {
-    type: ActionTypes.REMOVE_PRODUCT,
+    type: ActionTypes.INCREMENT_PRODUCT_QUANTITY,
     payload: {
       id,
     },
@@ -82,7 +83,7 @@ export function IncrementProductQuantityAction(id: string) {
 
 export function decrementProductQuantityAction(id: string) {
   return {
-    type: ActionTypes.REMOVE_PRODUCT,
+    type: ActionTypes.DECREMENT_PRODUCT_QUANTITY,
     payload: {
       id,
     },
