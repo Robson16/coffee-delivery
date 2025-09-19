@@ -19,8 +19,13 @@ export const PaymentOptionContainer = styled.label<PaymentOptionProps>`
     props.$isSelected &&
     css`
       background-color: ${(props) => props.theme.colors['secondary-light']};
-      border-color: ${props.theme.colors.secondary};
+      border-color: ${(props) => props.theme.colors.secondary};
     `}
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors['base-hover']};
+    cursor: pointer;
+  }
 
   input {
     display: none;

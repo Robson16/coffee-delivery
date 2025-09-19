@@ -28,5 +28,6 @@ export const Button = styled.button`
   &:active,
   &:focus {
     color: ${(props) => props.theme.colors['secondary']};
+    cursor: pointer;
   }
 `

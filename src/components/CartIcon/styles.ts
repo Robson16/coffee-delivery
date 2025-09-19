@@ -38,5 +38,6 @@ export const CartIconContainer = styled(NavLink)`
   &:hover {
     color: ${(props) => props.theme.colors['primary-light']};
     background-color: ${(props) => props.theme.colors['primary']};
+    cursor: pointer;
   }
 `
