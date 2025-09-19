@@ -3,7 +3,7 @@ import { PiCoffeeFill, PiPackageFill, PiTimerFill } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
 import { coffees } from '../../../data.json'
 import CoffeeImage from '../../assets/coffee-image.png'
-import { Card } from '../../components/Card'
+import { CardFull } from '../../components/Card/Full'
 import { CoffeeList, Intro, IntroContent } from './styles'
 
 export function Home() {
@@ -73,7 +73,7 @@ export function Home() {
 
         <div>
           {coffees.map((coffee) => (
-            <Card key={coffee.id} coffee={coffee} />
+            <CardFull key={coffee.id} product={coffee} />
           ))}
         </div>
       </CoffeeList>
