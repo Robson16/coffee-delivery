@@ -26,6 +26,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     const newProduct: Product = {
       id: data.id,
       quantity: data.quantity,
+      title: data.title,
+      price: data.price,
+      image: data.image,
     }
 
     dispatch(addProductAction(newProduct))

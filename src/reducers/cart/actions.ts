@@ -12,6 +12,9 @@ interface AddProductAction {
   payload: {
     id: string
     quantity: number
+    title: string
+    price: number
+    image: string
   }
 }
 
@@ -52,6 +55,9 @@ export function addProductAction(
     payload: {
       id: product.id,
       quantity: product.quantity,
+      title: product.title,
+      price: product.price,
+      image: product.image,
     },
   }
 }

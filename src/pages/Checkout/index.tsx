@@ -1,12 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { FiMapPin } from 'react-icons/fi'
 import { MdOutlineAttachMoney } from 'react-icons/md'
 import { PiBank, PiCreditCard, PiCurrencyDollar } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
 import zod from 'zod'
+import { CardMini } from '../../components/Card/CardMini'
 import { InputText } from '../../components/Form/InputText'
 import { PaymentOption } from '../../components/Form/PaymentOption'
+import { CartContext } from '../../contexts/CartContext'
 import {
   AddressFormGrid,
   CheckoutContainer,
@@ -42,6 +45,7 @@ type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
   const theme = useTheme()
+  const { products } = useContext(CartContext)
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
@@ -183,6 +187,9 @@ export function Checkout() {
         <Column>
           <h2>Cafés selecionados</h2>
           <OrderReview>
+            {products.map((product) => {
+              return <CardMini key={product.id} product={product} />
+            })}
             <button type="submit" disabled={!isValid}>
               Confirmar Pedido
             </button>

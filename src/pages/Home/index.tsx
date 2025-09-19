@@ -3,7 +3,7 @@ import { PiCoffeeFill, PiPackageFill, PiTimerFill } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
 import { coffees } from '../../../data.json'
 import CoffeeImage from '../../assets/coffee-image.png'
-import { CardFull } from '../../components/Card/Full'
+import { CardFull } from '../../components/Card/CardFull'
 import { CoffeeList, Intro, IntroContent } from './styles'
 
 export function Home() {

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CardContainer = styled.div`
+export const CardFullContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;

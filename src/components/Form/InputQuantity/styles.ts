@@ -20,6 +20,7 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   padding: 0.55rem 0.5rem;
+  color: ${(props) => props.theme.colors['secondary']};
   border: 0;
   background-color: transparent;
   transition: all 0.2s;
@@ -27,7 +28,7 @@ export const Button = styled.button`
   &:hover,
   &:active,
   &:focus {
-    color: ${(props) => props.theme.colors['secondary']};
+    color: ${(props) => props.theme.colors['secondary-dark']};
     cursor: pointer;
   }
 `

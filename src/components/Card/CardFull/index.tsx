@@ -1,22 +1,22 @@
 import { useContext, useEffect, useState } from 'react'
 import { HiCheck, HiShoppingCart } from 'react-icons/hi'
-import { CartContext } from '../../contexts/CartContext'
-import { InputQuantity } from '../Form/InputQuantity'
+import { CartContext } from '../../../contexts/CartContext'
+import { InputQuantity } from '../../Form/InputQuantity'
 import {
   Actions,
   AddToCartButton,
-  CardContainer,
-  CoffeeImage,
+  CardFullContainer,
   Description,
   Infos,
   Order,
   Price,
+  ProductImage,
   Tags,
   Title,
 } from './styles'
 
-interface CardProps {
-  coffee: {
+interface CardFullProps {
+  product: {
     id: string
     title: string
     description: string
@@ -29,7 +29,7 @@ interface CardProps {
   }
 }
 
-export function Card({ coffee }: CardProps) {
+export function CardFull({ product }: CardFullProps) {
   const { addProduct } = useContext(CartContext)
   const [quantity, setQuantity] = useState(1)
   const [isAddToCart, setIsAddToCart] = useState(false)
@@ -45,7 +45,13 @@ export function Card({ coffee }: CardProps) {
   }
 
   function handleAddProduct() {
-    addProduct({ id: coffee.id, quantity })
+    addProduct({
+      id: product.id,
+      quantity,
+      title: product.title,
+      price: product.price,
+      image: product.image,
+    })
     setIsAddToCart(true)
     setQuantity(1)
   }
@@ -67,21 +73,21 @@ export function Card({ coffee }: CardProps) {
   }, [isAddToCart])
 
   return (
-    <CardContainer>
-      <CoffeeImage src={coffee.image} alt={coffee.title} />
+    <CardFullContainer>
+      <ProductImage src={product.image} alt={product.title} />
       <Infos>
         <Tags>
-          {coffee.tags.map((tag) => {
+          {product.tags.map((tag) => {
             return <span key={tag.id}>{tag.name}</span>
           })}
         </Tags>
-        <Title>{coffee.title}</Title>
-        <Description>{coffee.description}</Description>
+        <Title>{product.title}</Title>
+        <Description>{product.description}</Description>
       </Infos>
       <Actions>
         <Price>
           <span>R$</span>
-          <span>{coffee.price.toFixed(2)}</span>
+          <span>{product.price.toFixed(2)}</span>
         </Price>
         <Order>
           <InputQuantity
@@ -94,6 +100,6 @@ export function Card({ coffee }: CardProps) {
           </AddToCartButton>
         </Order>
       </Actions>
-    </CardContainer>
+    </CardFullContainer>
   )
 }

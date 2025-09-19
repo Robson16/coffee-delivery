@@ -4,6 +4,9 @@ import { ActionTypes, type Actions } from './actions'
 export interface Product {
   id: string
   quantity: number
+  title: string
+  price: number
+  image: string
 }
 
 interface CartState {
@@ -16,7 +19,7 @@ interface CartState {
 export function cartReducer(state: CartState, action: Actions) {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT: {
-      const { id, quantity } = action.payload
+      const { id, quantity, title, price, image } = action.payload
 
       return produce(state, (draft) => {
         // Find the index of the product in the cart
@@ -26,7 +29,7 @@ export function cartReducer(state: CartState, action: Actions) {
 
         // If the product doesn't exist, add a new one
         if (productIndex < 0) {
-          draft.products.push({ id, quantity })
+          draft.products.push({ id, quantity, title, price, image })
         } else {
           // If the product already exists, update its quantity
           draft.products[productIndex].quantity += quantity
