@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../../contexts/CartContext'
 import { InputQuantity } from '../../Form/InputQuantity'
 import {
   Actions,
@@ -20,16 +21,21 @@ interface CardMiniProps {
 }
 
 export function CardMini({ product }: CardMiniProps) {
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(product.quantity)
+  const { incrementProductQuantity, decrementProductQuantity } =
+    useContext(CartContext)
 
   function handleIncrementQuantity() {
-    setQuantity((state) => state + 1)
+    setQuantity((prev) => prev + 1)
+    incrementProductQuantity(product.id)
   }
 
   function handleDecrementQuantity() {
-    if (quantity > 1) {
-      setQuantity((state) => state - 1)
-    }
+    // Prevents quantity from going below 1
+    if (quantity <= 1) return
+
+    setQuantity((prev) => prev - 1)
+    decrementProductQuantity(product.id)
   }
 
   return (
