@@ -23,38 +23,38 @@ export const CheckoutContainer = styled.main`
     color: ${(props) => props.theme.colors['base-subtitle']};
     margin-bottom: 1rem;
   }
+`
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-    @media (min-width: 992px) {
-      flex-direction: row;
-    }
+  @media (min-width: 992px) {
+    flex-direction: row;
+  }
+`
+
+export const Column = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  @media (min-width: 992px) {
+    flex-basis: 100%;
   }
 
-  form > div {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 0.75rem;
-
-    @media (min-width: 992px) {
-      flex-basis: 100%;
-    }
-  }
-
-  form > div:first-child {
+  &:first-child {
     flex-basis: 60%;
   }
 
-  form > div:last-child {
+  &:last-child {
     flex-basis: 40%;
   }
 `
 
-export const HeadingWithIcon = styled.hgroup`
+export const Heading = styled.hgroup`
   display: flex;
   gap: 0.5rem;
 

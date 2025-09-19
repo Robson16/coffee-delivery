@@ -10,9 +10,11 @@ import { PaymentOption } from '../../components/Form/PaymentOption'
 import {
   AddressFormGrid,
   CheckoutContainer,
+  Column,
   DeliveryDetails,
+  Form,
   gridAreas,
-  HeadingWithIcon,
+  Heading,
   OrderReview,
   PaymentMethod,
   PaymentOptionsGrid,
@@ -65,17 +67,17 @@ export function Checkout() {
 
   return (
     <CheckoutContainer>
-      <form onSubmit={handleSubmit(handleCreateNewOrder)}>
-        <div>
+      <Form onSubmit={handleSubmit(handleCreateNewOrder)}>
+        <Column>
           <h2>Complete seu pedido</h2>
           <DeliveryDetails>
-            <HeadingWithIcon>
+            <Heading>
               <FiMapPin size={22} color={theme.colors.primary} />
               <div>
                 <h3>Endereço de Entrega</h3>
                 <p>Informe o endereço onde deseja receber seu pedido</p>
               </div>
-            </HeadingWithIcon>
+            </Heading>
 
             <AddressFormGrid>
               <InputText
@@ -132,7 +134,7 @@ export function Checkout() {
           </DeliveryDetails>
 
           <PaymentMethod>
-            <HeadingWithIcon>
+            <Heading>
               <MdOutlineAttachMoney size={22} color={theme.colors.secondary} />
               <div>
                 <h3>Pagamento</h3>
@@ -141,7 +143,7 @@ export function Checkout() {
                   pagar
                 </p>
               </div>
-            </HeadingWithIcon>
+            </Heading>
 
             <PaymentOptionsGrid>
               <PaymentOption
@@ -176,17 +178,17 @@ export function Checkout() {
               </p>
             )}
           </PaymentMethod>
-        </div>
+        </Column>
 
-        <div>
+        <Column>
           <h2>Cafés selecionados</h2>
           <OrderReview>
             <button type="submit" disabled={!isValid}>
               Confirmar Pedido
             </button>
           </OrderReview>
-        </div>
-      </form>
+        </Column>
+      </Form>
     </CheckoutContainer>
   )
 }
