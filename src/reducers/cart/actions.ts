@@ -39,6 +39,12 @@ export function decrementProductQuantityAction(id: string) {
   }
 }
 
+export function clearCartAction() {
+  return {
+    type: ActionTypes.CLEAR_CART,
+  }
+}
+
 export function getCheckoutDataAction(checkoutData: CheckoutData) {
   return {
     type: ActionTypes.GET_CHECKOUT_DATA,

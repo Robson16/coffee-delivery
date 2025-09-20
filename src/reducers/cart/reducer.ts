@@ -112,6 +112,14 @@ export function cartReducer(state: CartState, action: Actions) {
         }
       })
     }
+    case ActionTypes.CLEAR_CART: {
+      return produce(state, (draft) => {
+        draft.products = []
+        draft.productsSumPrice = 0
+        draft.deliveryPrice = 0
+        draft.totalPrice = 0
+      })
+    }
     case ActionTypes.GET_CHECKOUT_DATA: {
       const { checkoutData } = action.payload
 

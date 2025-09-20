@@ -11,6 +11,7 @@ interface CartContextType {
   removeProduct: (id: string) => void
   incrementProductQuantity: (id: string) => void
   decrementProductQuantity: (id: string) => void
+  clearCart: () => void
   getCheckoutData: (data: CheckoutData) => void
 }
 

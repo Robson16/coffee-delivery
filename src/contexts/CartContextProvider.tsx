@@ -1,6 +1,7 @@
 import { useReducer, type ReactNode } from 'react'
 import {
   addProductAction,
+  clearCartAction,
   decrementProductQuantityAction,
   getCheckoutDataAction,
   incrementProductQuantityAction,
@@ -63,6 +64,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(decrementProductQuantityAction(id))
   }
 
+  function clearCart() {
+    dispatch(clearCartAction())
+  }
+
   function getCheckoutData(data: typeof checkoutData) {
     dispatch(getCheckoutDataAction(data))
   }
@@ -79,6 +84,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         removeProduct,
         incrementProductQuantity,
         decrementProductQuantity,
+        clearCart,
         getCheckoutData,
       }}
     >

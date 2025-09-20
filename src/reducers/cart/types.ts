@@ -22,6 +22,7 @@ export const ActionTypes = {
   REMOVE_PRODUCT: 'REMOVE_PRODUCT',
   INCREMENT_PRODUCT_QUANTITY: 'INCREMENT_PRODUCT_QUANTITY',
   DECREMENT_PRODUCT_QUANTITY: 'DECREMENT_PRODUCT_QUANTITY',
+  CLEAR_CART: 'CLEAR_CART',
   GET_CHECKOUT_DATA: 'GET_CHECKOUT_DATA',
 } as const
 
@@ -57,6 +58,10 @@ interface DecrementProductQuantityAction {
   }
 }
 
+interface ClearCartAction {
+  type: typeof ActionTypes.CLEAR_CART
+}
+
 interface GetCheckoutDataAction {
   type: typeof ActionTypes.GET_CHECKOUT_DATA
   payload: {
@@ -69,4 +74,5 @@ export type Actions =
   | RemoveProductAction
   | IncrementProductQuantityAction
   | DecrementProductQuantityAction
+  | ClearCartAction
   | GetCheckoutDataAction
