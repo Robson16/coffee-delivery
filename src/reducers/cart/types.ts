@@ -6,11 +6,23 @@ export interface Product {
   image: string
 }
 
+export interface CheckoutData {
+  cep: string
+  street: string
+  number: string
+  complement?: string
+  neighborhood: string
+  city: string
+  state: string
+  paymentMethod: 'credit' | 'debit' | 'money'
+}
+
 export const ActionTypes = {
   ADD_PRODUCT: 'ADD_PRODUCT',
   REMOVE_PRODUCT: 'REMOVE_PRODUCT',
   INCREMENT_PRODUCT_QUANTITY: 'INCREMENT_PRODUCT_QUANTITY',
   DECREMENT_PRODUCT_QUANTITY: 'DECREMENT_PRODUCT_QUANTITY',
+  GET_CHECKOUT_DATA: 'GET_CHECKOUT_DATA',
 } as const
 
 interface AddProductAction {
@@ -45,8 +57,16 @@ interface DecrementProductQuantityAction {
   }
 }
 
+interface GetCheckoutDataAction {
+  type: typeof ActionTypes.GET_CHECKOUT_DATA
+  payload: {
+    checkoutData: CheckoutData
+  }
+}
+
 export type Actions =
   | AddProductAction
   | RemoveProductAction
   | IncrementProductQuantityAction
   | DecrementProductQuantityAction
+  | GetCheckoutDataAction

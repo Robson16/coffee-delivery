@@ -1,8 +1,14 @@
 import { produce } from 'immer'
-import { ActionTypes, type Actions, type Product } from './types'
+import {
+  ActionTypes,
+  type Actions,
+  type CheckoutData,
+  type Product,
+} from './types'
 
 interface CartState {
   products: Product[]
+  checkoutData: CheckoutData
   productsSumPrice: number
   deliveryPrice: number
   totalPrice: number
@@ -71,6 +77,13 @@ export function cartReducer(state: CartState, action: Actions) {
         if (productToDecrementIndex >= 0) {
           draft.products[productToDecrementIndex].quantity -= 1
         }
+      })
+    }
+    case ActionTypes.GET_CHECKOUT_DATA: {
+      const { checkoutData } = action.payload
+
+      return produce(state, (draft) => {
+        draft.checkoutData = checkoutData
       })
     }
     default:

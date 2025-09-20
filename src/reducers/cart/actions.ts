@@ -1,4 +1,4 @@
-import { ActionTypes, type Product } from './types'
+import { ActionTypes, type CheckoutData, type Product } from './types'
 
 export function addProductAction(
   // This syntax ensures the function only requires an object
@@ -8,13 +8,7 @@ export function addProductAction(
 ) {
   return {
     type: ActionTypes.ADD_PRODUCT,
-    payload: {
-      id: product.id,
-      quantity: product.quantity,
-      title: product.title,
-      price: product.price,
-      image: product.image,
-    },
+    payload: { ...product },
   }
 }
 
@@ -42,5 +36,12 @@ export function decrementProductQuantityAction(id: string) {
     payload: {
       id,
     },
+  }
+}
+
+export function getCheckoutDataAction(checkoutData: CheckoutData) {
+  return {
+    type: ActionTypes.GET_CHECKOUT_DATA,
+    payload: { checkoutData },
   }
 }

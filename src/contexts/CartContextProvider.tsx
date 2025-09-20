@@ -2,6 +2,7 @@ import { useReducer, type ReactNode } from 'react'
 import {
   addProductAction,
   decrementProductQuantityAction,
+  getCheckoutDataAction,
   incrementProductQuantityAction,
   removeProductAction,
 } from '../reducers/cart/actions'
@@ -16,12 +17,27 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartState, dispatch] = useReducer(cartReducer, {
     products: [],
+    checkoutData: {
+      cep: '',
+      street: '',
+      number: '',
+      neighborhood: '',
+      city: '',
+      state: '',
+      paymentMethod: 'credit',
+    },
     productsSumPrice: 0,
     deliveryPrice: 0,
     totalPrice: 0,
   })
 
-  const { products, productsSumPrice, deliveryPrice, totalPrice } = cartState
+  const {
+    products,
+    checkoutData,
+    productsSumPrice,
+    deliveryPrice,
+    totalPrice,
+  } = cartState
 
   function addProduct(data: Product) {
     const newProduct: Product = {
@@ -47,10 +63,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(decrementProductQuantityAction(id))
   }
 
+  function getCheckoutData(data: typeof checkoutData) {
+    dispatch(getCheckoutDataAction(data))
+  }
+
   return (
     <CartContext.Provider
       value={{
         products,
+        checkoutData,
         productsSumPrice,
         deliveryPrice,
         totalPrice,
@@ -58,6 +79,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         removeProduct,
         incrementProductQuantity,
         decrementProductQuantity,
+        getCheckoutData,
       }}
     >
       {children}

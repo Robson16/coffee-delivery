@@ -47,7 +47,7 @@ type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
   const theme = useTheme()
-  const { products } = useContext(CartContext)
+  const { products, getCheckoutData } = useContext(CartContext)
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
@@ -66,8 +66,10 @@ export function Checkout() {
 
   const selectedPaymentMethod = watch('paymentMethod')
 
+  const isSubmitButtonDisable = products.length === 0 || !isValid
+
   function handleCreateNewOrder(data: CheckoutFormData) {
-    console.log(data)
+    getCheckoutData(data)
     reset()
   }
 
@@ -193,7 +195,7 @@ export function Checkout() {
             {products.map((product) => {
               return <CardMini key={product.id} product={product} />
             })}
-            <button type="submit" disabled={!isValid}>
+            <button type="submit" disabled={isSubmitButtonDisable}>
               Confirmar Pedido
             </button>
           </OrderReview>

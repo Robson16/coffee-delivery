@@ -1,8 +1,9 @@
 import { createContext } from 'react'
-import type { Product } from '../reducers/cart/types'
+import type { CheckoutData, Product } from '../reducers/cart/types'
 
 interface CartContextType {
   products: Product[]
+  checkoutData: CheckoutData
   productsSumPrice: number
   deliveryPrice: number
   totalPrice: number
@@ -10,6 +11,7 @@ interface CartContextType {
   removeProduct: (id: string) => void
   incrementProductQuantity: (id: string) => void
   decrementProductQuantity: (id: string) => void
+  getCheckoutData: (data: CheckoutData) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
