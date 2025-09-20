@@ -120,8 +120,19 @@ export const PaymentOptionsGrid = styled.div`
 export const OrderReview = styled(SectionBase)`
   border-radius: 6px 36px 6px 36px;
 
+  & > p {
+    text-align: center;
+    font-style: italic;
+    font-size: ${(props) => props.theme.typography.text['text-m'].size};
+    line-height: ${(props) => props.theme.typography.text['text-m'].lineHeight};
+    color: ${(props) => props.theme.colors['base-text']};
+  }
+
+  a,
   button[type='submit'] {
-    background-color: ${(props) => props.theme.colors.primary};
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: ${(props) => props.theme.colors.white};
     padding: 1rem;
     border: none;
@@ -133,6 +144,19 @@ export const OrderReview = styled(SectionBase)`
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
+  }
+
+  a {
+    background-color: ${(props) => props.theme.colors.secondary};
+    text-decoration: none;
+
+    &:hover {
+      background-color: ${(props) => props.theme.colors['secondary-dark']};
+    }
+  }
+
+  button[type='submit'] {
+    background-color: ${(props) => props.theme.colors.primary};
 
     &:disabled {
       color: ${(props) => props.theme.colors['base-label']};
@@ -142,6 +166,38 @@ export const OrderReview = styled(SectionBase)`
 
     &:not(:disabled):hover {
       background-color: ${(props) => props.theme.colors['primary-dark']};
+    }
+  }
+`
+
+export const ProductsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  & > div:not(:last-child) {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid ${(props) => props.theme.colors['base-button']};
+  }
+`
+
+export const CartSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    font-size: ${(props) => props.theme.typography.text['text-m'].size};
+    line-height: ${(props) => props.theme.typography.text['text-m'].lineHeight};
+
+    &:last-child {
+      font-size: ${(props) => props.theme.typography.text['text-l'].size};
+      line-height: ${(props) =>
+        props.theme.typography.text['text-l'].lineHeight};
+      font-weight: 700;
+      color: ${(props) => props.theme.colors['base-subtitle']};
     }
   }
 `

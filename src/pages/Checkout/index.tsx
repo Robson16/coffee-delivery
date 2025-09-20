@@ -4,14 +4,17 @@ import { useForm } from 'react-hook-form'
 import { FiMapPin } from 'react-icons/fi'
 import { MdOutlineAttachMoney } from 'react-icons/md'
 import { PiBank, PiCreditCard, PiCurrencyDollar } from 'react-icons/pi'
+import { Link } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import zod from 'zod'
 import { CardMini } from '../../components/Card/CardMini'
 import { InputText } from '../../components/Form/InputText'
 import { PaymentOption } from '../../components/Form/PaymentOption'
 import { CartContext } from '../../contexts/CartContext'
+import { formatCurrency } from '../../util/formatCurrency'
 import {
   AddressFormGrid,
+  CartSummary,
   CheckoutContainer,
   Column,
   DeliveryDetails,
@@ -21,6 +24,7 @@ import {
   OrderReview,
   PaymentMethod,
   PaymentOptionsGrid,
+  ProductsList,
 } from './styles'
 
 const checkoutFormValidationSchema = zod.object({
@@ -47,7 +51,13 @@ type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
   const theme = useTheme()
-  const { products, getCheckoutData } = useContext(CartContext)
+  const {
+    products,
+    deliveryPrice,
+    productsSumPrice,
+    totalPrice,
+    getCheckoutData,
+  } = useContext(CartContext)
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
@@ -192,9 +202,32 @@ export function Checkout() {
         <Column>
           <h2>Cafés selecionados</h2>
           <OrderReview>
-            {products.map((product) => {
-              return <CardMini key={product.id} product={product} />
-            })}
+            <ProductsList>
+              {products.length === 0 ? (
+                <>
+                  <p>Seu carrinho está vazio. Adicione alguns cafés!</p>
+                  <Link to="/">Ver produtos</Link>
+                </>
+              ) : (
+                products.map((product) => {
+                  return <CardMini key={product.id} product={product} />
+                })
+              )}
+            </ProductsList>
+            <CartSummary>
+              <p>
+                <span>Total de itens:</span>
+                <span>{formatCurrency(productsSumPrice)}</span>
+              </p>
+              <p>
+                <span>Entrega:</span>
+                <span>{formatCurrency(deliveryPrice)}</span>
+              </p>
+              <p>
+                <span>Total:</span>
+                <span>{formatCurrency(totalPrice)}</span>
+              </p>
+            </CartSummary>
             <button type="submit" disabled={isSubmitButtonDisable}>
               Confirmar Pedido
             </button>
