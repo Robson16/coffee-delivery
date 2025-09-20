@@ -119,4 +119,29 @@ export const PaymentOptionsGrid = styled.div`
 
 export const OrderReview = styled(SectionBase)`
   border-radius: 6px 36px 6px 36px;
+
+  button[type='submit'] {
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.white};
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    font-size: ${(props) => props.theme.typography.button['button-g'].size};
+    line-height: ${(props) =>
+      props.theme.typography.button['button-g'].lineHeight};
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:disabled {
+      color: ${(props) => props.theme.colors['base-label']};
+      background-color: ${(props) => props.theme.colors['base-button']};
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
+      background-color: ${(props) => props.theme.colors['primary-dark']};
+    }
+  }
 `
