@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { HiCheck, HiShoppingCart } from 'react-icons/hi'
 import { CartContext } from '../../../contexts/CartContext'
+import { formatCurrency } from '../../../util/formatCurrency'
 import { InputQuantity } from '../../Form/InputQuantity'
 import {
   Actions,
@@ -87,7 +88,7 @@ export function CardFull({ product }: CardFullProps) {
       <Actions>
         <Price>
           <span>R$</span>
-          <span>{product.price.toFixed(2)}</span>
+          <span>{formatCurrency(product.price, 'pt-BR', 'BRL', false)}</span>
         </Price>
         <Order>
           <InputQuantity

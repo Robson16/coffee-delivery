@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import { CartContext } from '../../../contexts/CartContext'
+import { formatCurrency } from '../../../util/formatCurrency'
 import { InputQuantity } from '../../Form/InputQuantity'
 import {
   Actions,
@@ -45,7 +46,7 @@ export function CardMini({ product }: CardMiniProps) {
         <Title>{product.title}</Title>
         <Price>
           <span>R$</span>
-          <span>{product.price.toFixed(2)}</span>
+          <span>{formatCurrency(product.price, 'pt-BR', 'BRL', false)}</span>
         </Price>
       </Infos>
       <Actions>
