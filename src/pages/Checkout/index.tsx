@@ -35,7 +35,9 @@ const checkoutFormValidationSchema = zod.object({
   state: zod
     .string()
     .nonempty('Informe a UF')
-    .length(2, 'UF deve ter 2 caracteres'),
+    .min(2, 'UF deve ter 2 caracteres')
+    .max(2, 'UF deve ter 2 caracteres')
+    .regex(/^[A-Za-z]{2}$/, 'UF deve conter apenas letras'),
   paymentMethod: zod.enum(['credit', 'debit', 'money'], {
     message: 'Informe um método de pagamento',
   }),
@@ -131,6 +133,7 @@ export function Checkout() {
                 gridArea={gridAreas.STATE}
                 id="state"
                 placeholder="UF"
+                maxLength={2}
                 error={errors.state}
                 {...register('state')}
               />
