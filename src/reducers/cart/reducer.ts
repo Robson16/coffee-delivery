@@ -1,13 +1,5 @@
 import { produce } from 'immer'
-import { ActionTypes, type Actions } from './actions'
-
-export interface Product {
-  id: string
-  quantity: number
-  title: string
-  price: number
-  image: string
-}
+import { ActionTypes, type Actions, type Product } from './types'
 
 interface CartState {
   products: Product[]

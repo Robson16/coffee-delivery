@@ -5,7 +5,8 @@ import {
   incrementProductQuantityAction,
   removeProductAction,
 } from '../reducers/cart/actions'
-import { cartReducer, type Product } from '../reducers/cart/reducer'
+import { cartReducer } from '../reducers/cart/reducer'
+import type { Product } from '../reducers/cart/types'
 import { CartContext } from './CartContext'
 
 interface CartContextProviderProps {

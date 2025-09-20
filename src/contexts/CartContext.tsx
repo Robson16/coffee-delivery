@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { type Product } from '../reducers/cart/reducer'
+import type { Product } from '../reducers/cart/types'
 
 interface CartContextType {
   products: Product[]
