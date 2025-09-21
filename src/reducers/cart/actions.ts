@@ -8,7 +8,9 @@ export function addProductAction(
 ) {
   return {
     type: ActionTypes.ADD_PRODUCT,
-    payload: { ...product },
+    payload: {
+      product,
+    },
   }
 }
 

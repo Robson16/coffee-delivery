@@ -30,7 +30,8 @@ function calculatePrices(products: Product[]) {
 export function cartReducer(state: CartState, action: Actions) {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT: {
-      const { id, quantity, title, price, image } = action.payload
+      const { product } = action.payload
+      const { id, quantity } = product
 
       return produce(state, (draft) => {
         // Find the index of the product in the cart
@@ -40,7 +41,7 @@ export function cartReducer(state: CartState, action: Actions) {
 
         // If the product doesn't exist, add a new one
         if (productIndex < 0) {
-          draft.products.push({ id, quantity, title, price, image })
+          draft.products.push(product)
         } else {
           // If the product already exists, update its quantity
           draft.products[productIndex].quantity += quantity

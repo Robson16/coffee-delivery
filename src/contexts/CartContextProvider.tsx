@@ -1,4 +1,4 @@
-import { useReducer, type ReactNode } from 'react'
+import { useCallback, useReducer, type ReactNode } from 'react'
 import {
   addProductAction,
   clearCartAction,
@@ -8,29 +8,23 @@ import {
   removeProductAction,
 } from '../reducers/cart/actions'
 import { cartReducer } from '../reducers/cart/reducer'
-import type { Product } from '../reducers/cart/types'
+import type { CheckoutData, Product } from '../reducers/cart/types'
 import { CartContext } from './CartContext'
 
 interface CartContextProviderProps {
   children: ReactNode
 }
 
+const initialCartState = {
+  products: [] as Product[],
+  checkoutData: {} as CheckoutData,
+  productsSumPrice: 0,
+  deliveryPrice: 0,
+  totalPrice: 0,
+}
+
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartState, dispatch] = useReducer(cartReducer, {
-    products: [],
-    checkoutData: {
-      cep: '',
-      street: '',
-      number: '',
-      neighborhood: '',
-      city: '',
-      state: '',
-      paymentMethod: 'credit',
-    },
-    productsSumPrice: 0,
-    deliveryPrice: 0,
-    totalPrice: 0,
-  })
+  const [cartState, dispatch] = useReducer(cartReducer, initialCartState)
 
   const {
     products,
@@ -40,37 +34,44 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     totalPrice,
   } = cartState
 
-  function addProduct(data: Product) {
-    const newProduct: Product = {
-      id: data.id,
-      quantity: data.quantity,
-      title: data.title,
-      price: data.price,
-      image: data.image,
-    }
+  const addProduct = useCallback(
+    (data: Product) => {
+      dispatch(addProductAction(data))
+    },
+    [dispatch],
+  )
 
-    dispatch(addProductAction(newProduct))
-  }
+  const removeProduct = useCallback(
+    (id: string) => {
+      dispatch(removeProductAction(id))
+    },
+    [dispatch],
+  )
 
-  function removeProduct(id: string) {
-    dispatch(removeProductAction(id))
-  }
+  const incrementProductQuantity = useCallback(
+    (id: string) => {
+      dispatch(incrementProductQuantityAction(id))
+    },
+    [dispatch],
+  )
 
-  function incrementProductQuantity(id: string) {
-    dispatch(incrementProductQuantityAction(id))
-  }
+  const decrementProductQuantity = useCallback(
+    (id: string) => {
+      dispatch(decrementProductQuantityAction(id))
+    },
+    [dispatch],
+  )
 
-  function decrementProductQuantity(id: string) {
-    dispatch(decrementProductQuantityAction(id))
-  }
-
-  function clearCart() {
+  const clearCart = useCallback(() => {
     dispatch(clearCartAction())
-  }
+  }, [dispatch])
 
-  function getCheckoutData(data: typeof checkoutData) {
-    dispatch(getCheckoutDataAction(data))
-  }
+  const getCheckoutData = useCallback(
+    (data: typeof checkoutData) => {
+      dispatch(getCheckoutDataAction(data))
+    },
+    [dispatch],
+  )
 
   return (
     <CartContext.Provider

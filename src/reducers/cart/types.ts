@@ -2,6 +2,11 @@ export interface Product {
   id: string
   quantity: number
   title: string
+  description: string
+  tags: Array<{
+    id: string
+    name: string
+  }>
   price: number
   image: string
 }
@@ -29,11 +34,7 @@ export const ActionTypes = {
 interface AddProductAction {
   type: typeof ActionTypes.ADD_PRODUCT
   payload: {
-    id: string
-    quantity: number
-    title: string
-    price: number
-    image: string
+    product: Product
   }
 }
 
