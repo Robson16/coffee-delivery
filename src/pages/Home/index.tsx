@@ -26,7 +26,7 @@ export function Home() {
                 <HiShoppingCart
                   size={32}
                   width={'fill'}
-                  color={theme.colors.background}
+                  color={theme.colors.white}
                   style={{ backgroundColor: theme.colors['primary-dark'] }}
                 />
                 Compra simples e segura
@@ -36,7 +36,7 @@ export function Home() {
                 <PiPackageFill
                   size={32}
                   width={'fill'}
-                  color={theme.colors.background}
+                  color={theme.colors.white}
                   style={{ backgroundColor: theme.colors['base-text'] }}
                 />
                 Embalagem mantém o café intacto
@@ -46,7 +46,7 @@ export function Home() {
                 <PiTimerFill
                   size={32}
                   width={'fill'}
-                  color={theme.colors.background}
+                  color={theme.colors.white}
                   style={{ backgroundColor: theme.colors['primary'] }}
                 />
                 Entrega rápida e rastreada
@@ -56,7 +56,7 @@ export function Home() {
                 <PiCoffeeFill
                   size={32}
                   width={'fill'}
-                  color={theme.colors.background}
+                  color={theme.colors.white}
                   style={{ backgroundColor: theme.colors['secondary'] }}
                 />
                 O café chega fresquinho até você
