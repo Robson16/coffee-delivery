@@ -46,13 +46,7 @@ export function CardFull({ product }: CardFullProps) {
   }
 
   function handleAddProduct() {
-    addProduct({
-      id: product.id,
-      quantity,
-      title: product.title,
-      price: product.price,
-      image: product.image,
-    })
+    addProduct({ ...product, quantity })
     setIsAddToCart(true)
     setQuantity(1)
   }
