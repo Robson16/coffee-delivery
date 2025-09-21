@@ -38,8 +38,8 @@ export const Title = styled.h3`
 export const Actions = styled.div`
   grid-area: ACTIONS;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: stretch;
+  gap: 0.5rem;
 `
 
 export const Price = styled.div`
@@ -52,5 +52,31 @@ export const Price = styled.div`
     font-size: ${(props) => props.theme.typography.text['text-m'].size};
     line-height: ${(props) => props.theme.typography.text['text-m'].lineHeight};
     font-weight: 700;
+  }
+`
+
+export const RemoveButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  font-size: ${(props) => props.theme.typography.button['button-m'].size};
+  line-height: ${(props) =>
+    props.theme.typography.button['button-m'].lineHeight};
+  color: ${(props) => props.theme.colors['base-text']};
+  background-color: ${(props) => props.theme.colors['base-button']};
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors['base-hover']};
+  }
+
+  svg {
+    color: ${(props) => props.theme.colors.secondary};
   }
 `

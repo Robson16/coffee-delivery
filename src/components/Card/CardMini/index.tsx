@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react'
+import { PiTrashLight } from 'react-icons/pi'
 import { CartContext } from '../../../contexts/CartContext'
 import { formatCurrency } from '../../../util/formatCurrency'
 import { InputQuantity } from '../../Form/InputQuantity'
@@ -8,6 +9,7 @@ import {
   Infos,
   Price,
   ProductImage,
+  RemoveButton,
   Title,
 } from './styles'
 
@@ -23,7 +25,7 @@ interface CardMiniProps {
 
 export function CardMini({ product }: CardMiniProps) {
   const [quantity, setQuantity] = useState(product.quantity)
-  const { incrementProductQuantity, decrementProductQuantity } =
+  const { incrementProductQuantity, decrementProductQuantity, removeProduct } =
     useContext(CartContext)
 
   function handleIncrementQuantity() {
@@ -37,6 +39,11 @@ export function CardMini({ product }: CardMiniProps) {
 
     setQuantity((prev) => prev - 1)
     decrementProductQuantity(product.id)
+  }
+
+  function handleRemoveProduct(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    removeProduct(product.id)
   }
 
   return (
@@ -55,6 +62,10 @@ export function CardMini({ product }: CardMiniProps) {
           incrementQuantity={handleIncrementQuantity}
           decrementQuantity={handleDecrementQuantity}
         />
+        <RemoveButton onClick={handleRemoveProduct}>
+          <PiTrashLight size={16} />
+          Remover
+        </RemoveButton>
       </Actions>
     </CardMiniContainer>
   )

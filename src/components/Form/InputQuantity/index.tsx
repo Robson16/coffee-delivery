@@ -15,7 +15,7 @@ export function InputQuantity({
   return (
     <InputNumberContainer>
       <Button
-        onClick={(event: React.MouseEvent) => {
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
           event.preventDefault()
           decrementQuantity()
         }}
@@ -24,7 +24,7 @@ export function InputQuantity({
       </Button>
       <span>{quantity}</span>
       <Button
-        onClick={(event: React.MouseEvent) => {
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
           event.preventDefault()
           incrementQuantity()
         }}
