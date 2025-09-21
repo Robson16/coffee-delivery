@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { FiMapPin } from 'react-icons/fi'
 import { MdOutlineAttachMoney } from 'react-icons/md'
 import { PiBank, PiCreditCard, PiCurrencyDollar } from 'react-icons/pi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import zod from 'zod'
 import { CardMini } from '../../components/Card/CardMini'
@@ -50,6 +50,7 @@ const checkoutFormValidationSchema = zod.object({
 type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
+  const navigate = useNavigate()
   const theme = useTheme()
   const {
     products,
@@ -81,6 +82,7 @@ export function Checkout() {
   function handleCreateNewOrder(data: CheckoutFormData) {
     getCheckoutData(data)
     reset()
+    navigate('/order-placed')
   }
 
   return (
