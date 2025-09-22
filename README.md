@@ -21,7 +21,9 @@ Uma aplicação de e-commerce de café para gerenciar um carrinho de compras. De
 
 Coffee Delivery é uma aplicação web para gerenciar um carrinho de compras de uma cafeteria fictícia.
 
-🌐 [Acesse o projeto](https://coffee-delivery-vert.vercel.app/)
+## 📐 Layout no Figma
+
+[Acessar Layout no Figma](https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate)
 
 ## 🛠️ Instalação
 
@@ -45,4 +47,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ---
 
-Feito com ♥ por [Robson H. Rodrigues](https://github.com/Robson16)
+Feito com ☕❤ por [Robson H. Rodrigues](https://github.com/Robson16)
