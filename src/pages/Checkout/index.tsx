@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useContext } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FiMapPin } from 'react-icons/fi'
 import { MdOutlineAttachMoney } from 'react-icons/md'
@@ -11,6 +11,7 @@ import { CardMini } from '../../components/Card/CardMini'
 import { InputText } from '../../components/Form/InputText'
 import { PaymentOption } from '../../components/Form/PaymentOption'
 import { CartContext } from '../../contexts/CartContext'
+import { fetchAddressData } from '../../util/fetchAddressData'
 import { formatCurrency } from '../../util/formatCurrency'
 import {
   AddressFormGrid,
@@ -74,8 +75,40 @@ export function Checkout() {
   const { isValid, errors } = formState
 
   const selectedPaymentMethod = watch('paymentMethod')
+  const deliveryPostalCode = watch('cep')
 
   const isSubmitButtonDisable = products.length === 0 || !isValid
+
+  // Auto fill address fields when postal code (CEP) is changed
+  const handleFetchAddressData = useCallback(
+    async (postalCode: string) => {
+      if (postalCode.length === 9 || postalCode.length === 8) {
+        const addressData = await fetchAddressData(postalCode)
+
+        if (addressData.erro) {
+          return
+        }
+
+        // Update form fields with fetched address data
+        reset(
+          {
+            ...watch(), // keeps existing values
+            street: addressData.logradouro, // updates street
+            neighborhood: addressData.bairro, // updates neighborhood
+            city: addressData.localidade, // updates city
+            state: addressData.uf, // updates state
+          },
+          { keepErrors: true, keepDirty: true, keepTouched: true },
+        )
+      }
+    },
+    [reset, watch],
+  )
+
+  // Watch for changes in the postal code field to trigger address auto-fill
+  useEffect(() => {
+    handleFetchAddressData(deliveryPostalCode)
+  }, [deliveryPostalCode, handleFetchAddressData])
 
   function handleCreateNewOrder(data: CheckoutFormData) {
     getCheckoutData(data)
