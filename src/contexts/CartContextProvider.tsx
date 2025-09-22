@@ -1,4 +1,4 @@
-import { useCallback, useReducer, type ReactNode } from 'react'
+import { useCallback, useEffect, useReducer, type ReactNode } from 'react'
 import {
   addProductAction,
   clearCartAction,
@@ -23,8 +23,24 @@ const initialCartState = {
   totalPrice: 0,
 }
 
+function getInitialState(initialState: typeof initialCartState) {
+  const storedStateAsJSON = localStorage.getItem(
+    '@coffee-delivery:cart-state-1.0.0',
+  )
+
+  if (storedStateAsJSON) {
+    return JSON.parse(storedStateAsJSON)
+  }
+
+  return initialState
+}
+
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartState, dispatch] = useReducer(cartReducer, initialCartState)
+  const [cartState, dispatch] = useReducer(
+    cartReducer,
+    initialCartState,
+    getInitialState,
+  )
 
   const {
     products,
@@ -33,6 +49,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     deliveryPrice,
     totalPrice,
   } = cartState
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cartState)
+    localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stateJSON)
+  }, [cartState])
 
   const addProduct = useCallback(
     (data: Product) => {

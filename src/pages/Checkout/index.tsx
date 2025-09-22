@@ -54,6 +54,7 @@ export function Checkout() {
   const theme = useTheme()
   const {
     products,
+    checkoutData,
     deliveryPrice,
     productsSumPrice,
     totalPrice,
@@ -62,11 +63,8 @@ export function Checkout() {
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
-      cep: '',
-      street: '',
-      neighborhood: '',
-      city: '',
-      state: '',
+      ...checkoutData,
+      paymentMethod: undefined,
     },
     mode: 'onTouched',
   })
